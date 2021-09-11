@@ -18,7 +18,7 @@ public class Body {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Expose
-    private int id;
+    private Long id;
     @Column(name = "type", nullable = false, unique = true)
     @Expose
     @NonNull

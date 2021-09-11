@@ -18,7 +18,7 @@ public class Mark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Expose
-    private int id;
+    private Long id;
     @Column(name = "mark_name", nullable = false, unique = true)
     @Expose
     @NonNull
