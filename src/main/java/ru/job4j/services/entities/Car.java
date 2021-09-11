@@ -1,4 +1,4 @@
-package ru.job4j.models;
+package ru.job4j.services.entities;
 
 import com.google.gson.annotations.Expose;
 import lombok.*;
@@ -10,15 +10,13 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Table(name = "cars")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "car_id")
     @Expose
-    private int id;
+    private Long id;
     @Column(name = "car_created", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @Expose
@@ -35,16 +33,33 @@ public class Car {
     @Column(name = "car_photo")
     @Expose
     private String photo;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "mark_id", nullable = false)
     @Expose
     private Mark mark;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "body_id", nullable = false)
     @Expose
     private Body body;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", nullable = false)
     @Expose
     private User user;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car other = (Car) o;
+        return id != null && id.equals(other.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
