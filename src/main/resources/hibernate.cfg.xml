@@ -19,6 +19,9 @@
         <property name="hibernate.cache.use_query_cache">false</property>
         <property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</property>
 
-<!--        <mapping class="ru.job4j.models.Example" />-->
+        <mapping class="ru.job4j.services.entities.Car" />
+        <mapping class="ru.job4j.services.entities.User" />
+        <mapping class="ru.job4j.services.entities.Body" />
+        <mapping class="ru.job4j.services.entities.Mark" />
     </session-factory>
 </hibernate-configuration>
